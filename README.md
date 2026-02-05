@@ -19,6 +19,22 @@ pip install openplugin-framework
 
 ## Quick Start
 
+### ⭐ Simplest Example: Story Plugin (No Setup Required!)
+
+The easiest way to test OpenPlugin - just needs an OpenAI API key:
+
+```bash
+# Set your API key
+export OPENAI_API_KEY="sk-your-key"
+
+# Run the story example
+python examples/story_app.py
+```
+
+This will let you write, continue, and improve stories interactively!
+
+### Basic Usage
+
 ```python
 from openplugin import PluginManager, OpenAIProvider
 
@@ -33,10 +49,10 @@ provider = OpenAIProvider(api_key="your-api-key")
 
 # Run a plugin command
 result = await manager.execute_command(
-    "plugin-name",
-    "command-name",
+    "story-plugin",  # Try the story plugin!
+    "write",
     provider=provider,
-    user_input="Hello, world!"
+    user_input="Write a short sci-fi story about AI"
 )
 ```
 
@@ -64,9 +80,19 @@ plugin-name/
 - 🔄 Google (Gemini) - Coming soon
 - 🔄 Custom providers via adapter interface
 
+## Examples
+
+- **Story Plugin** (`examples/story_app.py`) - ⭐ **Start here!** Simplest example, no external dependencies
+- **Email App** (`examples/email_app.py`) - Complete email drafting and sending
+- **Basic Usage** (`examples/basic_usage.py`) - Simple plugin loading example
+
 ## Documentation
 
-See [docs/](docs/) for detailed documentation.
+- [Getting Started](docs/GETTING_STARTED.md) - Detailed setup guide
+- [Story Plugin Tutorial](docs/STORY_PLUGIN_TUTORIAL.md) - ⭐ **Easiest way to learn!**
+- [Email App Tutorial](docs/EMAIL_APP_TUTORIAL.md) - Building email apps
+- [Architecture](docs/ARCHITECTURE.md) - Framework internals
+- [Use Cases](USE_CASES.md) - More application ideas
 
 ## License
 

@@ -1,0 +1,8 @@
+{
+  "name": "story-plugin",
+  "version": "1.0.0",
+  "description": "A simple plugin for writing and continuing stories using LLM",
+  "author": "OpenPlugin Team",
+  "keywords": ["story", "writing", "creative", "fiction"],
+  "license": "MIT"
+}

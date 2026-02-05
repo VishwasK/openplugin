@@ -52,4 +52,5 @@ plugins/*/
 !plugins/.gitkeep
 !plugins/example-plugin/
 !plugins/email-plugin/
+!plugins/story-plugin/
 *.log

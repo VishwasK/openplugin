@@ -2,6 +2,28 @@
 
 This directory contains example applications demonstrating how to use OpenPlugin.
 
+## Story App (`story_app.py`) ⭐ **START HERE**
+
+**The simplest way to test OpenPlugin!** No external dependencies needed - just an OpenAI API key.
+
+### Quick Start
+
+```bash
+export OPENAI_API_KEY="sk-your-key"
+python examples/story_app.py
+```
+
+### Features
+
+- Write creative stories
+- Continue existing stories
+- Improve story quality
+- Interactive mode for easy testing
+
+**Perfect for**: Testing OpenPlugin, learning how plugins work, creative writing
+
+See `docs/STORY_PLUGIN_TUTORIAL.md` for detailed guide.
+
 ## Email App (`email_app.py`)
 
 A complete email drafting and sending application.
