@@ -50,4 +50,5 @@ Thumbs.db
 # Project specific
 plugins/*/
 !plugins/.gitkeep
+!plugins/example-plugin/
 *.log

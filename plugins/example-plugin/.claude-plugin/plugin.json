@@ -1,0 +1,9 @@
+{
+  "name": "example-plugin",
+  "version": "1.0.0",
+  "description": "An example plugin demonstrating the OpenPlugin framework",
+  "author": "OpenPlugin Team",
+  "homepage": "https://github.com/yourusername/openplugin",
+  "keywords": ["example", "demo"],
+  "license": "MIT"
+}
