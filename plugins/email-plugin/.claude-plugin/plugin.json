@@ -1,0 +1,8 @@
+{
+  "name": "email-plugin",
+  "version": "1.0.0",
+  "description": "Plugin for drafting and sending emails using LLM",
+  "author": "OpenPlugin Team",
+  "keywords": ["email", "communication", "draft", "send"],
+  "license": "MIT"
+}

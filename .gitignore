@@ -51,4 +51,5 @@ Thumbs.db
 plugins/*/
 !plugins/.gitkeep
 !plugins/example-plugin/
+!plugins/email-plugin/
 *.log
