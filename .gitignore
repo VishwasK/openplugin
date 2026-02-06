@@ -53,4 +53,5 @@ plugins/*/
 !plugins/example-plugin/
 !plugins/email-plugin/
 !plugins/story-plugin/
+!plugins/web-search-plugin/
 *.log

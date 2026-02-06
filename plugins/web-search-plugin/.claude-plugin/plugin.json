@@ -1,0 +1,8 @@
+{
+  "name": "web-search-plugin",
+  "version": "1.0.0",
+  "description": "Plugin for searching the web and retrieving information",
+  "author": "OpenPlugin Team",
+  "keywords": ["search", "web", "information", "research"],
+  "license": "MIT"
+}
