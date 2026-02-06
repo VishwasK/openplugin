@@ -12,7 +12,7 @@ class OpenAIProvider(LLMProvider):
     def __init__(
         self,
         api_key: Optional[str] = None,
-        model: str = "gpt-4",
+        model: str = "gpt-5-nano",
         base_url: Optional[str] = None,
         **kwargs: Any
     ):
