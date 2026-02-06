@@ -120,6 +120,9 @@ class WebSearchApp:
     def simple_search(self, query: str, num_results: int = 5) -> str:
         """Simple search without LLM (just returns formatted results).
         
+        ⚠️ IMPORTANT: This method uses ZERO tokens - no LLM involved!
+        Perfect for when you just need search results without processing.
+        
         Args:
             query: Search query
             num_results: Number of results
@@ -128,6 +131,21 @@ class WebSearchApp:
             Formatted search results string
         """
         return self.searcher.search_and_format(query, max_results=num_results)
+    
+    def get_raw_results(self, query: str, num_results: int = 5) -> list:
+        """Get raw search results without any formatting.
+        
+        ⚠️ IMPORTANT: This method uses ZERO tokens - no LLM involved!
+        Returns raw list of dictionaries with title, url, snippet.
+        
+        Args:
+            query: Search query
+            num_results: Number of results
+            
+        Returns:
+            List of result dictionaries
+        """
+        return self.searcher.search(query, max_results=num_results)
 
     async def interactive_search(self):
         """Interactive search session."""
