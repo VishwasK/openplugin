@@ -57,4 +57,5 @@ plugins/*/
 !plugins/code-plugin/
 !plugins/translation-plugin/
 !plugins/text-processing-plugin/
+!plugins/salesforce-plugin/
 *.log

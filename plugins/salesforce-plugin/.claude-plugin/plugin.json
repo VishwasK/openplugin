@@ -1,0 +1,8 @@
+{
+  "name": "salesforce-plugin",
+  "version": "1.0.0",
+  "description": "Plugin for interacting with Salesforce data and Agentforce actions",
+  "author": "OpenPlugin Team",
+  "keywords": ["salesforce", "crm", "agentforce", "data"],
+  "license": "MIT"
+}

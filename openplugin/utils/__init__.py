@@ -3,4 +3,8 @@
 from .email_sender import EmailSender
 from .web_search import WebSearcher
 
-__all__ = ["EmailSender", "WebSearcher"]
+try:
+    from .salesforce_client import SalesforceClient
+    __all__ = ["EmailSender", "WebSearcher", "SalesforceClient"]
+except ImportError:
+    __all__ = ["EmailSender", "WebSearcher"]
