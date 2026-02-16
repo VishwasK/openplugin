@@ -1,0 +1,8 @@
+{
+  "name": "text-processing-plugin",
+  "version": "1.0.0",
+  "description": "Plugin for processing, summarizing, and extracting information from text",
+  "author": "OpenPlugin Team",
+  "keywords": ["text", "summarization", "extraction", "processing"],
+  "license": "MIT"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "translation-plugin",
+  "version": "1.0.0",
+  "description": "Plugin for translating text between languages",
+  "author": "OpenPlugin Team",
+  "keywords": ["translation", "language", "multilingual"],
+  "license": "MIT"
+}

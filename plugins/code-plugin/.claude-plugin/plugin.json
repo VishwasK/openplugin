@@ -1,0 +1,8 @@
+{
+  "name": "code-plugin",
+  "version": "1.0.0",
+  "description": "Plugin for analyzing, explaining, and improving code",
+  "author": "OpenPlugin Team",
+  "keywords": ["code", "programming", "analysis", "refactoring"],
+  "license": "MIT"
+}

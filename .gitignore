@@ -54,4 +54,7 @@ plugins/*/
 !plugins/email-plugin/
 !plugins/story-plugin/
 !plugins/web-search-plugin/
+!plugins/code-plugin/
+!plugins/translation-plugin/
+!plugins/text-processing-plugin/
 *.log
