@@ -6,6 +6,18 @@ from typing import Dict, List, Optional, Any
 from pydantic import BaseModel, Field
 
 
+class AuthConfig(BaseModel):
+    """Plugin authentication configuration."""
+
+    type: str = Field(..., description="Auth type: none, api_key, oauth2, smtp")
+    flow: Optional[str] = Field(None, description="OAuth flow: authorization_code, client_credentials")
+    authorization_url: Optional[str] = Field(None, description="OAuth authorization endpoint")
+    token_url: Optional[str] = Field(None, description="OAuth token endpoint")
+    scopes: Optional[List[str]] = Field(None, description="Required OAuth scopes")
+    pkce_required: Optional[bool] = Field(False, description="Whether PKCE is required")
+    credential_fields: Optional[Dict[str, str]] = Field(None, description="Required credential fields and descriptions")
+
+
 class PluginManifest(BaseModel):
     """Plugin manifest schema."""
 
@@ -19,6 +31,7 @@ class PluginManifest(BaseModel):
     keywords: Optional[List[str]] = Field(None, description="Plugin keywords")
     dependencies: Optional[Dict[str, str]] = Field(None, description="Plugin dependencies")
     mcp_servers: Optional[Dict[str, Any]] = Field(None, description="MCP server configurations")
+    auth: Optional[AuthConfig] = Field(None, description="Plugin authentication configuration")
 
 
 class Plugin:
@@ -103,6 +116,10 @@ class Plugin:
     def get_skill(self, skill_name: str) -> Optional[str]:
         """Get skill definition by name."""
         return self.skills.get(skill_name)
+
+    def get_auth_config(self) -> Optional[AuthConfig]:
+        """Get plugin's auth configuration, or None if no auth required."""
+        return self.manifest.auth
 
     def __repr__(self) -> str:
         """String representation."""

@@ -4,5 +4,14 @@
   "description": "Plugin for drafting and sending emails using LLM",
   "author": "OpenPlugin Team",
   "keywords": ["email", "communication", "draft", "send"],
-  "license": "MIT"
+  "license": "MIT",
+  "auth": {
+    "type": "smtp",
+    "credential_fields": {
+      "smtp_server": "SMTP server address (e.g., smtp.gmail.com)",
+      "smtp_port": "SMTP port (e.g., 587)",
+      "smtp_username": "Email/username",
+      "smtp_password": "Password or app password"
+    }
+  }
 }

@@ -30,6 +30,7 @@ class SalesforceApp:
         except Exception as e:
             print(f"Warning: Salesforce client not initialized: {e}")
             print("Set SALESFORCE_USERNAME, SALESFORCE_PASSWORD, etc.")
+            print("Or use OAuth token: SalesforceClient.from_token(access_token, instance_url)")
             self.sf_client = None
 
     async def query_salesforce(
@@ -202,6 +203,12 @@ async def main():
         print("  export SALESFORCE_USERNAME='your-username'")
         print("  export SALESFORCE_PASSWORD='your-password'")
         print("  export SALESFORCE_SECURITY_TOKEN='your-token'")
+        print("\nOr use OAuth token:")
+        print("  # Alternative: Connect with existing OAuth token")
+        print("  # sf_client = SalesforceClient.from_token(")
+        print("  #     access_token='your_access_token',")
+        print("  #     instance_url='https://yourorg.my.salesforce.com'")
+        print("  # )")
         return
     
     try:
@@ -247,6 +254,16 @@ async def main():
         )
         
         print(f"\nAction result:\n{json.dumps(action_result, indent=2)}")
+        
+        # Example 4: Using OAuth token (commented out)
+        print("\n" + "=" * 70)
+        print("Example 4: OAuth Token-Based Connection")
+        print("=" * 70)
+        print("\n# Alternative: Connect with existing OAuth token")
+        print("# sf_client = SalesforceClient.from_token(")
+        print("#     access_token='your_access_token',")
+        print("#     instance_url='https://yourorg.my.salesforce.com'")
+        print("# )")
         
     finally:
         await app.shutdown()

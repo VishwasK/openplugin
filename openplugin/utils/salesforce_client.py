@@ -20,7 +20,8 @@ class SalesforceClient:
         client_id: Optional[str] = None,
         client_secret: Optional[str] = None,
         instance_url: Optional[str] = None,
-        domain: Optional[str] = None
+        domain: Optional[str] = None,
+        access_token: Optional[str] = None
     ):
         """Initialize Salesforce client.
         
@@ -32,6 +33,7 @@ class SalesforceClient:
             client_secret: Connected App Client Secret (for OAuth)
             instance_url: Salesforce instance URL
             domain: Salesforce domain (login, test, custom)
+            access_token: OAuth access token (if using token-based auth)
         """
         if Salesforce is None:
             raise ImportError(
@@ -47,16 +49,27 @@ class SalesforceClient:
         self.client_secret = client_secret or os.getenv("SALESFORCE_CLIENT_SECRET")
         self.instance_url = instance_url or os.getenv("SALESFORCE_INSTANCE_URL")
         self.domain = domain or os.getenv("SALESFORCE_DOMAIN", "login")
+        self.access_token = access_token or os.getenv("SALESFORCE_ACCESS_TOKEN")
         
         self.sf = None
         self._connect()
 
     def _connect(self) -> None:
         """Connect to Salesforce."""
+        # Check if using OAuth access token first
+        if self.access_token and self.instance_url:
+            try:
+                self.sf = Salesforce(instance_url=self.instance_url, session_id=self.access_token)
+                return
+            except Exception as e:
+                raise ConnectionError(f"Failed to connect to Salesforce with access token: {str(e)}")
+        
+        # Fall back to username/password authentication
         if not self.username or not self.password:
             raise ValueError(
                 "Salesforce credentials not configured. "
-                "Set SALESFORCE_USERNAME and SALESFORCE_PASSWORD environment variables."
+                "Set SALESFORCE_USERNAME and SALESFORCE_PASSWORD environment variables, "
+                "or provide access_token and instance_url for OAuth token-based authentication."
             )
         
         try:
@@ -80,6 +93,40 @@ class SalesforceClient:
                 )
         except Exception as e:
             raise ConnectionError(f"Failed to connect to Salesforce: {str(e)}")
+    
+    @classmethod
+    def from_token(cls, access_token: str, instance_url: str) -> "SalesforceClient":
+        """Create client from existing OAuth access token.
+        
+        Args:
+            access_token: OAuth access token
+            instance_url: Salesforce instance URL
+            
+        Returns:
+            SalesforceClient instance
+        """
+        if Salesforce is None:
+            raise ImportError(
+                "simple-salesforce is not installed. "
+                "Install it with: pip install simple-salesforce"
+            )
+        
+        client = cls.__new__(cls)
+        client.access_token = access_token
+        client.instance_url = instance_url
+        client.username = None
+        client.password = None
+        client.security_token = None
+        client.client_id = None
+        client.client_secret = None
+        client.domain = None
+        
+        try:
+            client.sf = Salesforce(instance_url=instance_url, session_id=access_token)
+        except Exception as e:
+            raise ConnectionError(f"Failed to connect to Salesforce with access token: {str(e)}")
+        
+        return client
 
     def query(self, soql: str) -> Dict[str, Any]:
         """Execute SOQL query.
